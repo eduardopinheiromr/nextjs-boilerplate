@@ -9,7 +9,7 @@
     "build-storybook": "build-storybook -s public/",
     "serve-storybook": "serve storybook-static",
     "create-env": "mv .env.example .env",
-    "quickstart": "yarn create-env && yarn && yarn build && yarn start"
+    "setup": "rm -rf .git && git init && git flow init -d && yarn"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.7.2",

@@ -6,15 +6,13 @@
 
 ### To get favicon and others -> https://favicon.io/favicon-converter/
 
-### To get custom
+# **How to quickstart development**
 
-# **How to run local**
+Inside the directory, run in terminal only once\*:
 
-First, you need to clone this repository.
+    yarn setup && yarn dev
 
-Inside the directory, run in terminal:
-
-    yarn quickstart
+\*yarn setup will delete the .git folder, so you should run it only once. After this, run only yarn dev to start the development server.
 
 Then, open in your browser http://localhost:3000/
 <br/>
