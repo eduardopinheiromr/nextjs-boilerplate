@@ -1,11 +1,7 @@
 module.exports = {
   images: {
-    domains: ["picsum.photos"],
+    domains: ["i.ibb.co"],
   },
-  // i18n: {
-  //   locales: ["en", "fr", "es"],
-  //   defaultLocale: "en",
-  // },
   webpack: (config, { dev, isServer }) => {
     // Replace React with Preact only in client production build
     if (!dev && !isServer) {

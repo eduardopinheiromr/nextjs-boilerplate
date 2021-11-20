@@ -1,87 +1,68 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Box, Flex } from "@chakra-ui/layout";
-import { Container, LazyMotionBox } from "@components/layouts";
+import { Container } from "@components/layouts";
 import { Button } from "@components/ui";
 import MobileMenu from "./MobileMenu";
-import LanguageSwitcher from "./LanguageSwitcher";
 
-import logoImage from "@images/logo.svg";
-import { navigationContent } from "@i18n/shared/navigation";
 import { navigation } from "./constants";
+import Brand from "@components/ui/Brand";
+import { useRouter } from "next/router";
 
 export default function Header() {
-  return (
-    <LazyMotionBox
-      transition={{ duration: 1.2 }}
-      initial={{ y: -50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-    >
-      <Box
-        as="header"
-        color="#fff"
-        bgGradient="linear(to-b, black, transparent)"
-        position="absolute"
-        w="full"
-        zIndex="10"
-      >
-        <Container
-          as="nav"
-          d="flex"
-          flexDirection={["column", "column", "row"]}
-          alignItems="center"
-        >
-          <Flex
-            w={["full", "full", "160px"]}
-            mr="20px"
-            align="center"
-            justify="space-between"
-          >
-            <Link href="/" passHref>
-              <Box as="a" mt="10px">
-                <Image src={logoImage} alt="Mindpool Logo" />
-              </Box>
-            </Link>
-            <MobileMenu />
-          </Flex>
+  const router = useRouter();
 
-          <Flex
-            d={["none", "none", "flex"]}
-            w="full"
-            style={{ gap: 20 }}
-            align="center"
-          >
+  return (
+    <Box as="header" w="full" zIndex="10" bg="white">
+      <Container
+        as="nav"
+        d="flex"
+        flexDirection={["column", "column", "row"]}
+        alignItems="center"
+      >
+        <Flex
+          w={["full", "full", "auto"]}
+          mr={[0, 0, "42px", "93px"]}
+          align="center"
+          justify="center"
+        >
+          <Brand />
+          <MobileMenu />
+        </Flex>
+
+        <Flex
+          d={["none", "none", "flex"]}
+          w="full"
+          align="center"
+          justify="space-between"
+        >
+          <Flex align="center" style={{ gap: "16px" }}>
             {navigation.map((nav, key) => (
               <Link key={key} href={nav.link} passHref>
                 <Box
                   as="a"
-                  whiteSpace="nowrap"
                   fontWeight="bold"
+                  fontSize={["18px", "18px", "18px", "22px"]}
                   transition=".3s"
-                  _hover={{ color: "secondary" }}
+                  textDecoration={
+                    router.pathname === nav.link ? "underline" : "none"
+                  }
+                  color={router.pathname === nav.link ? "#630060" : "dark"}
+                  _hover={{
+                    textDecoration: "underline",
+                    color: "#630060",
+                  }}
                 >
-                  {navigationContent["en"][key].label}
+                  {nav.label}
                 </Box>
               </Link>
             ))}
-            <Flex w="full" justify="flex-end" align="center">
-              <LanguageSwitcher />
-              <Flex
-                ml="20px"
-                borderLeft="1px solid white"
-                p="0 20px"
-                fontWeight="bold"
-                whiteSpace="nowrap"
-                h="56px"
-                align="center"
-              >
-                Log in
-              </Flex>
-              <Button h="59px">Join now</Button>
-            </Flex>
           </Flex>
-        </Container>
-      </Box>
-    </LazyMotionBox>
+
+          <Button h="59px" href="#">
+            Call To Action
+          </Button>
+        </Flex>
+      </Container>
+    </Box>
   );
 }

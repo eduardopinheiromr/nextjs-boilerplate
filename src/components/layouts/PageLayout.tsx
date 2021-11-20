@@ -1,5 +1,8 @@
 import { ReactNode } from "react";
-import { Footer, Header } from "@components/sections";
+import {
+  // Footer,
+  Header,
+} from "@components/sections";
 
 type PageLayoutProps = {
   children: ReactNode;
@@ -10,7 +13,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
     <>
       <Header />
       <main>{children}</main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

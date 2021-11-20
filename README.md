@@ -1,11 +1,12 @@
 # **Next.js Boilerplate**
 
-## <a href="https://edu-nextjs-boilerplate.vercel.app" target="_blank">DEMO ONLINE</a>
+## DEMO ONLINE</a>
 
-## <a href="https://6147c00b149a1b003a2cad0a-oyxrqimiyy.chromatic.com" target="_blank">StoryBook</a>
+### To get social metatags -> metatags.io
 
-<br/>
-<img src="./docs/cover.png">
+### To get favicon and others -> https://favicon.io/favicon-converter/
+
+### To get custom
 
 # **How to run local**
 

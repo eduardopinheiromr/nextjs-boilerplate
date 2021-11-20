@@ -1,57 +1,63 @@
 import Link from "next/link";
-import {
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerHeader,
-  DrawerOverlay,
-} from "@chakra-ui/modal";
-import { Grid, Box } from "@chakra-ui/react";
+import { Grid, Box, Flex, Collapse } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Button } from "@components/ui";
-import LanguageSwitcher from "./LanguageSwitcher";
 import MenuToggle from "./MenuToggle";
-
-import { navigationContent } from "@i18n/shared/navigation";
 import { navigation } from "./constants";
 
-// Used for i18n, cancelled by errors with storybook
-// import { useRouter } from "next/router";
-// const { locale } = useRouter();
 export default function MobileMenu() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  typeof window !== "undefined" && window.addEventListener("scroll", onClose);
+  typeof window !== "undefined" && window.addEventListener("resize", onClose);
+
   return (
     <>
-      <MenuToggle toggle={onOpen} isOpen={isOpen} />
-
-      <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
-        <DrawerOverlay />
-        <DrawerContent fontWeight="bold" textAlign="center">
-          <DrawerHeader borderBottomWidth="1px" bg="black" color="white">
-            Menu
-          </DrawerHeader>
-          <DrawerBody bg="black" color="white" p="30px">
-            <Grid gap={6}>
-              <Link href="/login" passHref>
-                <Box as="a">Log in</Box>
+      <MenuToggle toggle={isOpen ? onClose : onOpen} isOpen={isOpen} />
+      <Flex
+        position="absolute"
+        bg="white"
+        shadow={isOpen ? "0 0px 30px rgba(29, 29, 29, 0.5)" : "none"}
+        h={[isOpen ? "400px" : "70px", isOpen ? "400px" : "70px", 0]}
+        w={[isOpen ? "80%" : "70px", isOpen ? "80%" : "70px", 0]}
+        transition=".3s"
+        top="1"
+        right="1"
+        justify="center"
+        align="center"
+        zIndex="20"
+        rounded="xl"
+      >
+        <Collapse in={isOpen} animateOpacity>
+          <Grid
+            gap={6}
+            height={isOpen ? "300px" : "80px"}
+            display={isOpen ? "grid" : "none"}
+          >
+            {navigation.map((nav, key) => (
+              <Link key={key} href={nav.link} passHref shallow>
+                <Box as="a" onClick={() => setTimeout(onClose, 50)}>
+                  {nav.label}
+                </Box>
               </Link>
-              {navigation.map((nav, key) => (
-                <div key={key} onClick={onClose}>
-                  <Link href={nav.link}>
-                    {navigationContent["en"][key].label}
-                  </Link>
-                </div>
-              ))}
-              <Box>
-                <LanguageSwitcher />
-              </Box>
+            ))}
 
-              <Button>Join now</Button>
-            </Grid>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
+            <Button href="/cotacao">Fazer cotação</Button>
+          </Grid>
+        </Collapse>
+      </Flex>
+      <Box
+        display={isOpen ? "block" : "none"}
+        left={0}
+        top={"0"}
+        w="full"
+        h="full"
+        position="absolute"
+        zIndex="5"
+        bg="black"
+        opacity=".3"
+        onClick={onClose}
+      />
     </>
   );
 }
