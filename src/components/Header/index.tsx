@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { Box, Flex } from "@chakra-ui/layout";
-import { Container } from "@components/layouts";
-import { Button } from "@components/ui";
+import Container from "@components/layouts/Container";
+import Button from "@components/Button";
 import MobileMenu from "./MobileMenu";
 
 import { navigation } from "./constants";
-import Brand from "@components/ui/Brand";
+import Brand from "@components/Brand";
 import { useRouter } from "next/router";
 
 export default function Header() {

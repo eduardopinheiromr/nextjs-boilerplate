@@ -5,9 +5,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -s public/",
-    "serve-storybook": "serve storybook-static",
     "create-env": "mv .env.example .env",
     "setup": "rm -rf .git && git init && git flow init -d && yarn"
   },
@@ -18,29 +15,19 @@
     "@fontsource/open-sans": "^4.5.2",
     "axios": "^0.24.0",
     "framer-motion": "^5.3.1",
-    "next": "12.0.4",
+    "next": "^12.0.8",
     "preact": "^10.5.15",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.0.0-rc.0",
+    "react-dom": "^18.0.0-rc.0",
     "react-icons": "^4.3.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@storybook/addon-essentials": "6.3.12",
-    "@storybook/addon-links": "6.3.12",
-    "@storybook/react": "6.3.12",
+    "browserslist": "^4.19.1",
     "@types/node": "^16.11.9",
     "@types/react": "^17.0.35",
     "@types/react-dom": "^17.0.11",
-    "babel-loader": "^8.2.3",
-    "babel-plugin-react-require": "^3.1.3",
-    "chromatic": "^6.0.6",
     "eslint": "<8.0.0",
     "eslint-config-next": "12.0.4",
-    "next-router-mock": "^0.6.3",
-    "serve": "13.0.2",
-    "storybook-addon-performance": "^0.16.1",
-    "tsconfig-paths-webpack-plugin": "^3.5.2",
     "typescript": "^4.5.0"
   }
 }
