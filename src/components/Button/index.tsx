@@ -47,7 +47,6 @@ function ButtonBase(props: ButtonProps) {
       d="flex"
       alignItems="center"
       justifyContent="center"
-      // w={["300px", "300px", "300px", "340px"]}
     >
       <Text as="span" whiteSpace="nowrap">
         {props.children}

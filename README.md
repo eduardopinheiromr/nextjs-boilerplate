@@ -20,4 +20,4 @@ Then, open in your browser http://localhost:3000/
 
 # **Used Technologies**
 
-Next.js | Preact | Chakra UI | TypeScript | StoryBook
+Next.js | Preact | Chakra UI | TypeScript

@@ -1,5 +1,5 @@
+import PageLayout from "@components/layouts/PageLayout";
 import PageTags from "@components/PageTags";
-import { PageLayout } from "@components/layouts";
 
 const pageTagsProps = {
   title: "Page title",
